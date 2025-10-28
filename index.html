@@ -7,9 +7,21 @@
     <link rel="stylesheet" href="stiler.css">
 </head>
 <body>
+    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">☰</button>
 
-<div class="content">
-    <h1>
+    <nav class="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h2>Menylinje</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro">Hjem</a></li>
+            <li><a href="#commands">Kommandoar</a></li>
+            <li><a href="#sources">Kjelder</a></li>
+        </ul>
+    </nav>
+
+    <div class="content" id="main-content">
+    <h1 id="intro">
         Git Guide
     </h1>
 
@@ -20,7 +32,7 @@ Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-k
     </p>
 
 
-    <h3>Git har mange forskjellige kommandoer. som f.eks. </h3>
+    <h3 id="commands">Git har mange forskjellige kommandoer. som f.eks. </h3>
     <p>
         git init - for å initialisere et nytt git-repositorium <br>
         git clone - for å klone et eksisterende repositorium <br>
@@ -60,7 +72,7 @@ Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-k
     </p>
 
 
-    <h3>Kilder:</h3>
+    <h3 id="sources">Kilder:</h3>
 
  
   <a href="https://www.w3schools.com/git/default.asp">W3 Schools</a><br>
@@ -74,6 +86,31 @@ Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-k
 </audio>
 
     
+    <script>
+        // Enkel toggle for sidebar (mobil)
+        (function(){
+            const btn = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            if(!btn || !sidebar) return;
+
+            btn.addEventListener('click', () => {
+                const isOpen = sidebar.classList.toggle('open');
+                sidebar.setAttribute('aria-hidden', String(!isOpen));
+                btn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // Lukk dersom bruker klikker utenfor (mobil)
+            document.addEventListener('click', (e) => {
+                if(window.innerWidth <= 800 && sidebar.classList.contains('open')){
+                    if(!sidebar.contains(e.target) && !btn.contains(e.target)){
+                        sidebar.classList.remove('open');
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
 
