@@ -4,8 +4,9 @@ body {
 
 .content {
   text-align: center;
+  margin-left: 270px; /* sidebar width + gap */
+  padding: 24px;
 }
-
 
 p {
   font-family: verdana;
@@ -13,7 +14,6 @@ p {
   text-align: center;
 }
 
-<<<<<<< HEAD
 .right {
   text-align: right;
 }
@@ -21,7 +21,8 @@ p {
 
 .left {
   text-align: left;
-=======
+}
+
 /* Side-nav styles */
 .menu-toggle {
   position: fixed;
@@ -80,12 +81,6 @@ p {
   background: rgba(255,255,255,0.08);
 }
 
-/* Push content to the right on desktop */
-.content {
-  margin-left: 270px; /* sidebar width + gap */
-  padding: 24px;
-}
-
 /* Responsive: small screens */
 @media (max-width: 800px) {
   .menu-toggle { display: block; }
@@ -107,5 +102,4 @@ p {
 /* små visuelle justeringer */
 @media (prefers-reduced-motion: reduce) {
   .sidebar { transition: none; }
->>>>>>> 0f9ddb3d608a3090ce2eac7a85ef5a7867f544e5
 }
