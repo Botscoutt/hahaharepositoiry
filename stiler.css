@@ -13,6 +13,15 @@ p {
   text-align: center;
 }
 
+<<<<<<< HEAD
+.right {
+  text-align: right;
+}
+
+
+.left {
+  text-align: left;
+=======
 /* Side-nav styles */
 .menu-toggle {
   position: fixed;
@@ -98,4 +107,5 @@ p {
 /* små visuelle justeringer */
 @media (prefers-reduced-motion: reduce) {
   .sidebar { transition: none; }
+>>>>>>> 0f9ddb3d608a3090ce2eac7a85ef5a7867f544e5
 }

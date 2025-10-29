@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git</title>
+    <title>Git fra Jakub og Vinjar</title>
     <link rel="stylesheet" href="stiler.css">
 </head>
 <body>
@@ -76,8 +76,35 @@ Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-k
         slik at dei blir lagra i repositoriet.
     </p>
 
+    <h3>Hvorfor terminalen sier "Clean up tree" når jeg gjør git pull</h3>
+    <p>Dette betyr som regel at Git oppdager lokale endringer eller en ufullstendig operasjon som må ryddes før en oppdatering. Vanlige årsaker:
+    <ul>
+        <li>Lokale unstaged/endringer som blokkerer oppdatering</li>
+        <li>Uavsluttet merge eller rebase</li>
+        <li>Låste filer eller filnavn/case-problemer på Windows</li>
+        <li>Et hook eller verktøy (IDE) som kjører ekstra opprydding</li>
+    </ul>
+    Sjekk og løs med disse steg:</p>
+    <pre><code>git status
+    # midlertidig lagre lokale endringer:
+    git stash push -m "wip"
+    git pull
+    git stash pop
 
+<<<<<<< HEAD
+    # hvis du har konflikter:
+    git status
+    # løs konflikter i filene, så:
+    git add <fil(er)>
+    git commit
+
+    # slett uønskede untracked filer (FORSIKTIG):
+    git clean -fd</code></pre>
+    <p>Hvis meldingen fortsatt kommer, sjekk output fra git pull for mer kontekst og se etter hooks/loggfiler i .git/hooks eller IDE-logg.</p>
+    <h3>Kilder:</h3>
+=======
     <h3 id="sources">Kilder:</h3>
+>>>>>>> 0f9ddb3d608a3090ce2eac7a85ef5a7867f544e5
 
  
   <a href="https://www.w3schools.com/git/default.asp">W3 Schools</a><br>
@@ -89,7 +116,6 @@ Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-k
     <source src="jazz.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>
-
     
     <script>
         // Enkel toggle for sidebar (mobil)
