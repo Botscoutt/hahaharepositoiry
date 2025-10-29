@@ -8,6 +8,22 @@
 </head>
 <body>
 
+    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">☰</button>
+
+    <nav class="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h2>Menylinje</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#intro">Hjem</a></li>
+            <li><a href="index.html#commands">Kommandoar</a></li>
+            <li><a href="index.html#sources">Kjelder</a></li>
+            <li><a href="musikk.html">Musikk</a></li>
+        </ul>
+    </nav>
+
+
+
 <div class="right">
     
 <h1>Jakub<h1>
@@ -94,10 +110,34 @@ Your browser does not support the audio element.
 Your browser does not support the audio element.
 </audio>
 
+ <script>
+        // Enkel toggle for sidebar (mobil)
+        (function(){
+            const btn = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            if(!btn || !sidebar) return;
+
+            btn.addEventListener('click', () => {
+                const isOpen = sidebar.classList.toggle('open');
+                sidebar.setAttribute('aria-hidden', String(!isOpen));
+                btn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // Lukk dersom bruker klikker utenfor (mobil)
+            document.addEventListener('click', (e) => {
+                if(window.innerWidth <= 800 && sidebar.classList.contains('open')){
+                    if(!sidebar.contains(e.target) && !btn.contains(e.target)){
+                        sidebar.classList.remove('open');
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        })();
+    </script>
+
 
 <div>
-
-
 
 </body>
 </html>
