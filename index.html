@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git fra Jakub og Vinjar</title>
+    <link rel="stylesheet" href="stiler.css">
+</head>
+<body>
+    <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">☰</button>
+
+    <nav class="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h2>Menylinje</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro">Hjem</a></li>
+            <li><a href="#commands">Kommandoar</a></li>
+            <li><a href="#sources">Kjelder</a></li>
+            <li><a href="musikk.html">Musikk</a></li>
+        </ul>
+    </nav>
+
+    <div class="content" id="main-content">
+    <h1 id="intro">
+        Git Guide
+    </h1>
+
+    <p>
+Git er et distribuert versjonskontrollsystem som hjelper utviklere med å spore endringer i kodebasen sin,<br>
+samarbeide med andre og administrere forskjellige versjoner av prosjektene sine.<br>
+Det ble opprettet av Linus Torvalds i 2005 for å støtte utviklingen av Linux-kjernen.<br>
+    </p>
+
+
+    <h3 id="commands">Git har mange forskjellige kommandoer. som f.eks. </h3>
+    <p>
+        git init - for å initialisere et nytt git-repositorium <br>
+        git clone - for å klone et eksisterende repositorium <br>
+        git add - for å legge til filer i staging-området <br>
+        git commit - for å lagre endringer i repositoriet <br>
+        git push - for å laste opp endringer til en ekstern server <br>
+        git pull - for å hente og slå sammen endringer fra en ekstern server <br>
+        git status - for å sjekke statusen til repositoriet <br>
+        git log - for å se historikken til endringer i repositoriet <br>
+        git branch - for å administrere grener i repositoriet <br>
+        git merge - for å slå sammen grener <br>
+        git checkout - for å bytte mellom grener eller gjenopprette filer <br>
+        git remote - for å administrere eksterne repositorier <br>
+        git fetch - for å hente endringer fra en ekstern server uten å slå dem sammen <br>
+        git reset - for å tilbakestille endringer i repositoriet <br>
+        git diff - for å se forskjeller mellom filer eller commits <br>
+        git stash - for midlertidig å lagre endringer uten å committe dem <br>
+        git tag - for å merke spesifikke commits med en etikett <br>
+    </p>
+
+    <h3>Det finst også mange andre kommandoar, men dei vi brukar mest er:</h3>
+    <p>
+        git init <br>
+        git add <br>
+        git commit <br>
+        git push <br>
+        git pull <br>
+        git branch <br>
+        git merge <br>
+        git switch <br>
+    </p>
+  
+    <h3>
+        Her er eit bilete av nokon som pusher endringar til eit repositorium:
+    </h3>
+    <img src="push.JPG" alt="Bilde av nokon som pusher endringar til eit git-repositorium" width="40%">
+    <p>
+        Dette er dei viktigaste kommandoane for å bruke git effektivt.<br>
+        Med desse kommandoane kan du spore endringar, samarbeide med andre<br>
+        og administrere kodebasen din på ein effektiv måte. Etter at du har<br>
+        redigert koden er det viktig og adde og committe endringene dine,<br>
+        slik at dei blir lagra i repositoriet.
+    </p>
+
+    <h3>Hvorfor terminalen sier "Clean up tree" når jeg gjør git pull</h3>
+    <p>Dette betyr som regel at Git oppdager lokale endringer eller en ufullstendig operasjon som må ryddes før en oppdatering. Vanlige årsaker:
+    <ul>
+        <li>Lokale unstaged/endringer som blokkerer oppdatering</li>
+        <li>Uavsluttet merge eller rebase</li>
+        <li>Låste filer eller filnavn/case-problemer på Windows</li>
+        <li>Et hook eller verktøy (IDE) som kjører ekstra opprydding</li>
+    </ul>
+    Sjekk og løs med disse steg:</p>
+    <pre><code>git status
+    # midlertidig lagre lokale endringer:
+    git stash push -m "wip"
+    git pull
+    git stash pop
+
+    # hvis du har konflikter:
+    git status
+    # løs konflikter i filene, så:
+    git add <fil(er)>
+    git commit
+
+    # slett uønskede untracked filer (FORSIKTIG):
+    git clean -fd</code></pre>
+    <p>Hvis meldingen fortsatt kommer, sjekk output fra git pull for mer kontekst og se etter hooks/loggfiler i .git/hooks eller IDE-logg.</p>
+    <h3>Kilder:</h3>
+
+ 
+  <a href="https://www.w3schools.com/git/default.asp">W3 Schools</a><br>
+  <a href="https://github.com/Botscoutt/hahaharepositoiry">Github</a>
+  <p>Jørn</p>
+</div>
+
+<audio loop autoplay>
+    <source src="jazz.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+    
+    <script>
+        // Enkel toggle for sidebar (mobil)
+        (function(){
+            const btn = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            if(!btn || !sidebar) return;
+
+            btn.addEventListener('click', () => {
+                const isOpen = sidebar.classList.toggle('open');
+                sidebar.setAttribute('aria-hidden', String(!isOpen));
+                btn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // Lukk dersom bruker klikker utenfor (mobil)
+            document.addEventListener('click', (e) => {
+                if(window.innerWidth <= 800 && sidebar.classList.contains('open')){
+                    if(!sidebar.contains(e.target) && !btn.contains(e.target)){
+                        sidebar.classList.remove('open');
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
+

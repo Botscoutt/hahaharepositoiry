@@ -1,0 +1,100 @@
+body {
+  background-color: lightblue;
+}
+
+.content {
+  text-align: center;
+}
+
+.right {
+  text-align: center;
+  font-size: medium;
+}
+
+
+.left {
+  text-align: center;
+  font-size: medium;
+}
+
+/* Side-nav styles */
+.menu-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  background: #1f6feb;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1002;
+  display: none; /* vises på små skjermer */
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background: #0b3d91;
+  color: #fff;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar .sidebar-header h2 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 8px 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 10px;
+  display: block;
+  border-radius: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Responsive: small screens */
+@media (max-width: 800px) {
+  .menu-toggle { display: block; }
+  .sidebar {
+    transform: translateX(-110%);
+    transition: transform 0.25s ease-in-out;
+    width: 220px;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar[aria-hidden="true"] { visibility: visible; }
+  .content {
+    margin-left: 0;
+    padding-top: 60px; /* gi plass for toggle */
+  }
+}
+
+/* små visuelle justeringer */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar { transition: none; }
+}
+
